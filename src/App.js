@@ -125,9 +125,15 @@ function App() {
                               deleteItem={ondelete}
                               />
                         }
-                        else {
-                          return ""
-                        }
+                        else if(catagory==="") {
+                          return <ShowExpense
+                              amount={val.amount}
+                              type={val.type}
+                              key={index}
+                              id={index}
+                              deleteItem={ondelete}/>
+                        }else
+                        return ""
                     })   
               }
           </table>
