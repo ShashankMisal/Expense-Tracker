@@ -3,6 +3,7 @@ import TakeExpense from './TakeExpense'
 import ShowExpense from './ShowExpense'
 import Button from '@material-ui/core/Button';
 import LayersClearIcon from '@material-ui/icons/LayersClear';
+import Tooltip from '@material-ui/core/Tooltip';
 import './App.css';
 
 
@@ -52,6 +53,31 @@ function App() {
     setcatagory("")
   }
 
+  React.useEffect(()=>{
+    const expenses = localStorage.getItem("expenses"); 
+    if(expenses){
+      setaddAllExpense(JSON.parse(expenses));
+    }
+  },[]);
+
+
+  React.useEffect(()=>{
+    localStorage.setItem("expenses",JSON.stringify(addAllExpense));
+  })
+
+  React.useEffect(()=>{
+    const totalAmount = localStorage.getItem("totalAmount"); 
+    if(totalAmount){
+      setTotal(JSON.parse(totalAmount));
+    }
+  },[]);
+
+
+  React.useEffect(()=>{
+    localStorage.setItem("totalAmount",JSON.stringify(total));
+  })
+
+
 
   return (
     <>
@@ -69,10 +95,13 @@ function App() {
               <option value="">SelectCatagory</option>
               <option value="Food">FOOD</option>
               <option value="Travel">Travel</option>
+              <option value="Petrol">Petrol</option>
             </select>
-            <Button onClick={onClear} className="btn">
-              <LayersClearIcon id="clearIcon"/>  
-            </Button>
+            <Tooltip title={<span className="tt">Clear Catagory</span>} arrow placement="bottom">
+              <Button onClick={onClear} className="btn">
+                <LayersClearIcon id="clearIcon"/>  
+              </Button>
+            </Tooltip>
       </div>
 
 

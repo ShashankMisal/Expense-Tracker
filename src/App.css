@@ -163,6 +163,9 @@ table {
     font-size: 1.5rem;
 }
 
+.tt{
+  font-size: 1.1rem;
+}
 
 
   @media only screen and (max-width: 768px) {

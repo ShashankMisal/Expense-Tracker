@@ -1,6 +1,8 @@
 import React,{useState} from 'react';
 import Button from '@material-ui/core/Button';
 import AddCircleRoundedIcon from '@material-ui/icons/AddCircleRounded';
+import Tooltip from '@material-ui/core/Tooltip';
+
 
 const TakeExpense = (props) =>{
 
@@ -56,11 +58,14 @@ const TakeExpense = (props) =>{
                     <option >SelectCatagory</option>
                     <option value="Food">Food</option>
                     <option value="Travel">Travel</option>
+                    <option value="Petrol">Petrol</option>
                 </select>
 
-                <Button onClick={sendExpense} id="addBtn">
-                    <AddCircleRoundedIcon id="addIconBtn" />
-                    </Button>
+                <Tooltip title={<span className="tt">Add Expense</span>} arrow placement="bottom">
+                        <Button onClick={sendExpense} id="addBtn">
+                            <AddCircleRoundedIcon id="addIconBtn" />
+                            </Button>
+                   </Tooltip>         
 
 
         </div>
